@@ -40,7 +40,9 @@ pip install -r requirements-colab.txt
 ```
 
 ### 2. Download Spider dataset
-Download from [Yale-LILY/spider](https://drive.google.com/uc?export=download&id=1_AckYkinAnhqmRQtGsQgUKAnTHxxX5J0) and extract into `data/spider/`.
+Download Spider 1.0 from the [official Yale-LILY Spider page](https://yale-lily.github.io/spider)
+and extract it into `data/spider/`. The current official Google Drive file is
+linked from that page; older file IDs may no longer work.
 
 Expected structure:
 ```
@@ -63,14 +65,23 @@ Example from the repository root in Colab:
 
 ```bash
 mkdir -p /content/spider-download
-gdown --id 1_AckYkinAnhqmRQtGsQgUKAnTHxxX5J0 \
-  -O /content/spider-download/spider.zip
+# Download spider.zip from the official page, then upload it to:
+# /content/spider-download/spider.zip
 python training/prepare_spider.py \
   /content/spider-download/spider.zip \
   --output data/spider
 python training/train_colab.py \
   --tables data/spider/tables.json \
   --output-dir /content/qwen-text2sql-adapter
+```
+
+For a clean Colab runtime, clone this repository instead of extracting an old
+ZIP copy:
+
+```python
+!git clone https://github.com/UdayGajul/qwen-text2sql-spider.git
+%cd /content/qwen-text2sql-spider
+!pip install -r requirements-colab.txt
 ```
 
 To evaluate the adapter you trained instead of the published adapter, set:
