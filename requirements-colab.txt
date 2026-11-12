@@ -1,0 +1,14 @@
+# Google Colab T4 environment for QLoRA training and evaluation.
+# Colab already provides CUDA-enabled PyTorch; installing the matching wheel
+# is usually unnecessary and can overwrite the runtime's CUDA dependencies.
+accelerate>=0.34.0
+bitsandbytes>=0.43.0
+datasets>=3.0.0
+gdown>=5.2.0
+huggingface_hub>=0.26.0
+peft>=0.14.0
+python-dotenv>=1.0.0
+sentencepiece>=0.2.0
+transformers>=4.56.2,<5.0
+trl==1.5.1
+tqdm>=4.66.0
